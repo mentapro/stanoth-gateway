@@ -4,7 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t gateway .'
+                def image = docker.build("gateway")
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh "kubectl set image deployment/gateway gateway:latest"
             }
         }
     }
