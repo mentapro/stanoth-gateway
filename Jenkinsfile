@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                def image = docker.build("gateway")
+                sh "docker build -t gateway ."
             }
         }
         stage('Deploy') {
