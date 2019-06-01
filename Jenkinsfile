@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "kubectl set image deployment/gateway gateway:latest"
+                sh "kubectl set deployment/gateway gateway:latest"
             }
         }
     }
