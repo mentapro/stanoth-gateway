@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "kubectl apply -f ./deployment.yml"
-                sh "kubectl set image deploy/gateway gateway:${env.BUILD_TAG}"
+                sh "kubectl set image deploy/gateway gateway=gateway:${env.BUILD_TAG}"
             }
         }
     }
