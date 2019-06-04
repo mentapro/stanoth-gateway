@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "docker build -t gateway ."
+                sh "docker build -t gateway:${env.BUILD_TAG} ."
             }
         }
         stage('Deploy') {
             steps {
                 sh "kubectl apply -f ./deployment.yml"
-                sh "kubectl set image deploy/gateway gameway"
+                sh "kubectl set image deploy/gateway gateway:${env.BUILD_TAG}"
             }
         }
     }
