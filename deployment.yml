@@ -17,6 +17,7 @@ spec:
       containers:
       - name: gateway
         image: gateway:latest
+        imagePullPolicy: Never
         ports:
         - name: http-port
           containerPort: 5000
